@@ -1,4 +1,5 @@
 import { Card, Input, Row, Col, Typography, Button } from 'antd'
+import { motion } from 'framer-motion'
 import { 
   SearchOutlined,
   HeartOutlined,
@@ -34,18 +35,49 @@ function App() {
       
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">
+        <motion.div 
+          className="hero-content"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.h1 
+            className="hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             AI-Powered Healthcare That Predicts, Prevents, and Personalizes
-          </h1>
-          <p className="hero-subtitle">
+          </motion.h1>
+          <motion.p 
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
             Transform patient care with predictive analytics that catch health issues before they become emergencies. Email us to learn more.
-          </p>
-          <EmailForm {...emailFormProps} />
-        </div>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
+            <EmailForm {...emailFormProps} />
+          </motion.div>
+        </motion.div>
         
         {/* Floating Dashboard */}
-        <div className="floating-dashboard">
+        <motion.div 
+          className="floating-dashboard"
+          initial={{ opacity: 0, x: 100, rotate: 5 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          whileHover={{ 
+            scale: 1.02,
+            rotate: 2,
+            transition: { duration: 0.3 }
+          }}
+        >
           <div className="dashboard-header">
             <div className="dashboard-title">John Anderson</div>
             <div className="dashboard-status">Live Updates Active</div>
@@ -95,7 +127,7 @@ function App() {
               <div className="alert-note">requiring immediate attention</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Healthcare Platform Section */}
@@ -103,7 +135,13 @@ function App() {
         <div className="container">
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} lg={12}>
-              <div className="platform-content">
+              <motion.div 
+                className="platform-content"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
                 <Title level={2}>Healthcare Platform</Title>
                 <Paragraph className="platform-subtitle">
                   Your AI-powered guide to making informed clinical decisions and improving patient outcomes.
@@ -147,7 +185,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </Col>
             
             <Col xs={24} lg={12}>
@@ -202,7 +240,11 @@ function App() {
           
           <Row gutter={[32, 32]}>
             <Col xs={24} md={8}>
-              <Card className="benefit-card card-glass">
+              <motion.div
+                whileHover={{ y: -10, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="benefit-card card-glass">
                 <div className="benefit-icon">
                   <UserOutlined />
                 </div>
@@ -211,6 +253,7 @@ function App() {
                   Each patient gets their own AI model trained on their unique health data, providing insights no generic algorithm can match.
                 </Paragraph>
               </Card>
+              </motion.div>
             </Col>
             
             <Col xs={24} md={8}>
@@ -279,18 +322,84 @@ function App() {
       {/* Feature Tags Section */}
       <section className="feature-tags">
         <div className="container">
-          <div className="tags-grid">
-            <div className="tag">EHR Integration</div>
-            <div className="tag">Predictive Analytics</div>
-            <div className="tag">Real-Time Monitoring</div>
-            <div className="tag">Clinical Validation</div>
-            <div className="tag">Patient-Specific Models</div>
-            <div className="tag">HIPAA Compliant</div>
-            <div className="tag">Proactive Care</div>
-            <div className="tag">Continuous Learning</div>
-            <div className="tag">Explainable AI</div>
-            <div className="tag">AI Image Analysis</div>
-          </div>
+          <motion.div 
+            className="tags-grid"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              EHR Integration
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Predictive Analytics
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Real-Time Monitoring
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Clinical Validation
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Patient-Specific Models
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              HIPAA Compliant
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Proactive Care
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Continuous Learning
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              Explainable AI
+            </motion.div>
+            <motion.div 
+              className="tag"
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
+              AI Image Analysis
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -419,18 +528,7 @@ function App() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta">
-        <div className="container">
-          <div className="cta-content">
-            <Title level={2}>Ready to Transform Healthcare?</Title>
-            <p className="cta-subtitle">
-              AI that learns each patient's unique patterns to detect early warning signs before they become problems.
-            </p>
-            <EmailForm {...emailFormProps} />
-          </div>
-        </div>
-      </section>
+
 
       {/* Footer */}
       <footer className="footer">
