@@ -1,70 +1,83 @@
 import { useState } from 'react'
+import { Input, Button, Form, message } from 'antd'
+import { MailOutlined, SendOutlined } from '@ant-design/icons'
 
 interface EmailFormProps {
   onSubmit: (email: string) => void
 }
 
 export function EmailForm({ onSubmit }: EmailFormProps) {
-  const [email, setEmail] = useState('')
+  const [form] = Form.useForm()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState('')
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-
-    if (!email) {
-      setError('Please enter your email address')
-      return
-    }
-
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address')
-      return
-    }
-
+  const handleSubmit = async (values: { email: string }) => {
     setIsSubmitting(true)
     
     try {
-      await onSubmit(email)
-      setEmail('')
+      await onSubmit(values.email)
+      form.resetFields()
+      message.success('Thank you! We\'ll be in touch soon.')
     } catch (err) {
-      setError('Something went wrong. Please try again.')
+      message.error('Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <form className="email-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <input
-          type="email"
-          placeholder="Email"
-          className={`email-input ${error ? 'error' : ''}`}
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value)
-            if (error) setError('')
-          }}
-          disabled={isSubmitting}
-          aria-label="Enter your email address"
-        />
-        {error && <div className="error-message">{error}</div>}
+    <Form
+      form={form}
+      onFinish={handleSubmit}
+      layout="inline"
+      className="email-form"
+      style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '1rem',
+        maxWidth: '32rem',
+        margin: '0 auto'
+      }}
+    >
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <Form.Item
+          name="email"
+          rules={[
+            { required: true, message: 'Please enter your email address' },
+            { type: 'email', message: 'Please enter a valid email address' }
+          ]}
+          style={{ flex: 1, minWidth: '250px', margin: 0 }}
+        >
+          <Input
+            size="large"
+            placeholder="Enter your email address"
+            prefix={<MailOutlined />}
+            style={{
+              height: '3rem',
+              fontSize: '1rem',
+              borderRadius: '0.5rem'
+            }}
+          />
+        </Form.Item>
+        
+        <Form.Item style={{ margin: 0 }}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            size="large"
+            loading={isSubmitting}
+            icon={!isSubmitting && <SendOutlined />}
+            style={{
+              height: '3rem',
+              fontSize: '1rem',
+              borderRadius: '0.5rem',
+              padding: '0 2rem',
+              fontWeight: 600
+            }}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </Button>
+        </Form.Item>
       </div>
-      <button 
-        type="submit" 
-        className={`submit-button ${isSubmitting ? 'loading' : ''}`}
-        disabled={isSubmitting}
-        aria-label="Submit email"
-      >
-        {isSubmitting ? 'Submitting...' : 'Submit'}
-      </button>
-    </form>
+    </Form>
   )
 } 
