@@ -912,7 +912,7 @@ body {
 
 .feature-item span {
   font-size: 0.875rem;
-  color: var(--kuduu-gray);
+  color: var(--kuduu-white);
   font-weight: 500;
 }
 
@@ -981,7 +981,7 @@ body {
 
 .tag {
   background: var(--kuduu-card-gradient);
-  color: var(--kuduu-gray);
+  color: var(--kuduu-white);
   padding: 0.75rem 1.5rem;
   border-radius: 2rem;
   font-size: 0.875rem;
@@ -990,6 +990,7 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tag::before {
@@ -1011,9 +1012,11 @@ body {
 }
 
 .tag:hover {
-  color: var(--kuduu-white);
+  color: var(--kuduu-primary);
   transform: translateY(-2px);
   box-shadow: var(--kuduu-shadow-lg);
+  border-color: var(--kuduu-primary);
+  background: linear-gradient(135deg, rgba(41, 52, 255, 0.1), rgba(147, 51, 234, 0.1));
 }
 
 /* Founder's Note Section */
