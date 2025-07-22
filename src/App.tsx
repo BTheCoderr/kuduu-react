@@ -1,13 +1,17 @@
-import { Card, Input, Row, Col, Typography, Divider } from 'antd'
+import { Card, Input, Row, Col, Typography, Button } from 'antd'
 import { 
-  HeartOutlined, 
-  BulbOutlined, 
-  AppstoreOutlined, 
-  MonitorOutlined,
-  CheckCircleOutlined,
-  StarOutlined,
+  SearchOutlined,
+  HeartOutlined,
+  ClockCircleOutlined,
   UserOutlined,
-  SearchOutlined
+  CheckCircleOutlined,
+  LineChartOutlined,
+  LinkOutlined,
+  LockOutlined,
+  MonitorOutlined,
+  TeamOutlined,
+  BulbOutlined,
+  ArrowRightOutlined
 } from '@ant-design/icons'
 import { Navigation } from './components/Navigation'
 import { EmailForm } from './components/EmailForm'
@@ -15,8 +19,6 @@ import { EmailForm } from './components/EmailForm'
 const { Title, Paragraph } = Typography
 
 function App() {
-
-
   const handlePilotApply = (email: string): void => {
     console.log('Pilot application submitted:', email)
     // Here you would typically send the email to your backend
@@ -45,167 +47,143 @@ function App() {
         {/* Floating Dashboard */}
         <div className="floating-dashboard">
           <div className="dashboard-header">
-            <div className="dashboard-title">Patient Monitor</div>
-            <div className="dashboard-status">Active</div>
+            <div className="dashboard-title">John Anderson</div>
+            <div className="dashboard-status">Live Updates Active</div>
           </div>
           
           <div className="dashboard-search">
             <Input 
               className="dashboard-input"
-              placeholder="Search patients..." 
+              placeholder="Search patients, records, care plans, imaging..." 
               prefix={<SearchOutlined />}
             />
           </div>
           
           <div className="dashboard-patient">
-            <div className="patient-avatar">JD</div>
+            <div className="patient-avatar">JA</div>
             <div className="patient-info">
-              <div className="patient-name">John Doe</div>
-              <div className="patient-id">ID: 12345</div>
-            </div>
-            <div className="patient-status">Stable</div>
-          </div>
-          
-          <div className="dashboard-metrics">
-            <div className="metric">
-              <div className="metric-label">Health Score</div>
-              <div className="metric-value">92</div>
-            </div>
-            <div className="metric">
-              <div className="metric-label">Risk Level</div>
-              <div className="metric-value low">Low</div>
+              <div className="patient-name">John Anderson</div>
+              <div className="patient-details">49 years old • M • MRN: MRN-p1</div>
+              <div className="patient-sources">Active Data Sources -</div>
             </div>
           </div>
           
-          <div className="dashboard-vitals">
-            <div className="vital">
-              <div className="vital-label">BP</div>
-              <div className="vital-value">120/80</div>
+          <div className="dashboard-health-score">
+            <div className="health-score-title">Real-Time Health Score</div>
+            <div className="health-score-circle">
+              <div className="score-number">67</div>
             </div>
-            <div className="vital">
-              <div className="vital-label">HR</div>
-              <div className="vital-value">72</div>
+            <div className="health-score-status">
+              <div className="status-text">Status: Moderate Risk</div>
+              <div className="status-warning">Declining trend detected • Requires attention</div>
             </div>
-            <div className="vital">
-              <div className="vital-label">Temp</div>
-              <div className="vital-value">98.6</div>
+            <div className="health-score-progress">
+              <div className="progress-label">Health Score Progress</div>
+              <div className="progress-bar">
+                <div className="progress-segment critical">Critical</div>
+                <div className="progress-segment poor">Poor</div>
+                <div className="progress-segment fair">Fair</div>
+                <div className="progress-segment good">Good</div>
+              </div>
             </div>
-            <div className="vital">
-              <div className="vital-label">O2</div>
-              <div className="vital-value">98%</div>
+          </div>
+          
+          <div className="dashboard-alerts">
+            <div className="alerts-title">Critical Alerts</div>
+            <div className="alert-item">
+              <div className="alert-text">165/95 BP (mmHg)</div>
+              <div className="alert-note">requiring immediate attention</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Cards Section */}
-      <section className="main-cards">
+      {/* Healthcare Platform Section */}
+      <section className="platform-section">
         <div className="container">
-          <Row gutter={[32, 32]}>
-            <Col xs={24} md={12} lg={6}>
-              <Card 
-                className="transform-card card-glass"
-              >
-                <div className="card-icon">
-                  <HeartOutlined />
-                </div>
-                <Title level={3}>Transform</Title>
-                <Paragraph>
-                  Revolutionize healthcare delivery with AI-powered insights that transform patient outcomes.
+          <Row gutter={[48, 48]} align="middle">
+            <Col xs={24} lg={12}>
+              <div className="platform-content">
+                <Title level={2}>Healthcare Platform</Title>
+                <Paragraph className="platform-subtitle">
+                  Your AI-powered guide to making informed clinical decisions and improving patient outcomes.
                 </Paragraph>
-              </Card>
+                
+                {/* Patient Outcomes Card */}
+                <div className="patient-outcomes-card card-glass">
+                  <div className="card-header">
+                    <Title level={4}>Patient Outcomes</Title>
+                  </div>
+                  <div className="card-tabs">
+                    <div className="tab active">
+                      <LineChartOutlined />
+                      <span>Health Trends</span>
+                    </div>
+                    <div className="tab">
+                      <BulbOutlined />
+                      <span>Risk Factors</span>
+                    </div>
+                  </div>
+                  <div className="card-chart">
+                    <div className="chart-line"></div>
+                  </div>
+                  <div className="card-dropdown">
+                    <Button type="text" className="dropdown-btn">
+                      See Growth <ArrowRightOutlined />
+                    </Button>
+                    <div className="dropdown-content">
+                      <div className="dropdown-item">
+                        <CheckCircleOutlined />
+                        <span>Real-time patient monitoring</span>
+                      </div>
+                      <div className="dropdown-item">
+                        <CheckCircleOutlined />
+                        <span>AI-powered risk assessment</span>
+                      </div>
+                      <div className="dropdown-item">
+                        <CheckCircleOutlined />
+                        <span>Predictive health insights</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Col>
             
-            <Col xs={24} md={12} lg={6}>
-              <Card 
-                className="intelligence-card card-glass"
-              >
-                <div className="card-icon">
-                  <BulbOutlined />
-                </div>
-                <Title level={3}>Intelligence</Title>
+            <Col xs={24} lg={12}>
+              <div className="monitoring-card card-glass">
+                <Title level={3}>Real-Time Monitoring</Title>
                 <Paragraph>
-                  Advanced AI that learns and adapts to each patient's unique health patterns.
+                  Track patient vitals, medication adherence, and health trends in real-time with automated alerts and notifications.
                 </Paragraph>
-              </Card>
-            </Col>
-            
-            <Col xs={24} md={12} lg={6}>
-              <Card 
-                className="platform-card card-glass"
-              >
-                <div className="card-icon">
-                  <AppstoreOutlined />
+                
+                <div className="feature-grid">
+                  <div className="feature-item">
+                    <HeartOutlined />
+                    <span>Vital Signs</span>
+                  </div>
+                  <div className="feature-item">
+                    <ClockCircleOutlined />
+                    <span>Live Alerts</span>
+                  </div>
+                  <div className="feature-item">
+                    <UserOutlined />
+                    <span>Retention</span>
+                  </div>
+                  <div className="feature-item">
+                    <LineChartOutlined />
+                    <span>Health Trends</span>
+                  </div>
+                  <div className="feature-item">
+                    <CheckCircleOutlined />
+                    <span>Compliant</span>
+                  </div>
+                  <div className="feature-item">
+                    <LinkOutlined />
+                    <span>Integrations</span>
+                  </div>
                 </div>
-                <Title level={3}>Platform</Title>
-                <Paragraph>
-                  Seamless integration with existing healthcare systems and workflows.
-                </Paragraph>
-              </Card>
-            </Col>
-            
-            <Col xs={24} md={12} lg={6}>
-              <Card 
-                className="monitoring-card card-glass"
-              >
-                <div className="card-icon">
-                  <MonitorOutlined />
-                </div>
-                <Title level={3}>Monitoring</Title>
-                <Paragraph>
-                  Continuous health monitoring with real-time alerts and predictive analytics.
-                </Paragraph>
-              </Card>
-            </Col>
-          </Row>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="features">
-        <div className="container">
-          <div className="text-center mb-5">
-            <Title level={2}>Why Choose Kuduu?</Title>
-            <p className="section-subtitle">
-              Advanced AI technology designed specifically for healthcare professionals
-            </p>
-          </div>
-          
-          <Row gutter={[32, 32]}>
-            <Col xs={24} md={8}>
-              <Card className="feature-card card-glass">
-                <div className="feature-icon">
-                  <CheckCircleOutlined />
-                </div>
-                <Title level={3}>Patient-Specific AI</Title>
-                <Paragraph>
-                  Our MPP technology creates unique AI models for each patient, ensuring personalized care.
-                </Paragraph>
-              </Card>
-            </Col>
-            
-            <Col xs={24} md={8}>
-              <Card className="feature-card card-glass">
-                <div className="feature-icon">
-                  <StarOutlined />
-                </div>
-                <Title level={3}>Real-Time Analytics</Title>
-                <Paragraph>
-                  Predictive health analytics that work in real-time to catch issues before they escalate.
-                </Paragraph>
-              </Card>
-            </Col>
-            
-            <Col xs={24} md={8}>
-              <Card className="feature-card card-glass">
-                <div className="feature-icon">
-                  <UserOutlined />
-                </div>
-                <Title level={3}>Seamless Integration</Title>
-                <Paragraph>
-                  Works with your existing EHR systems without disrupting current workflows.
-                </Paragraph>
-              </Card>
+              </div>
             </Col>
           </Row>
         </div>
@@ -214,85 +192,125 @@ function App() {
       {/* Benefits Section */}
       <section id="benefits" className="benefits">
         <div className="container">
-          <Row gutter={[48, 48]} align="middle">
-            <Col xs={24} lg={12}>
-              <Title level={2}>The Benefits</Title>
-              <div className="benefit-item">
+          <div className="benefits-header">
+            <div className="benefits-badge">BENEFITS</div>
+            <Title level={2}>Why Choose Kuduu?</Title>
+            <Paragraph className="benefits-subtitle">
+              Revolutionary AI technology designed to transform patient care through personalized intelligence
+            </Paragraph>
+          </div>
+          
+          <Row gutter={[32, 32]}>
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
                 <div className="benefit-icon">
-                  <CheckCircleOutlined />
+                  <UserOutlined />
                 </div>
-                <div>
-                  <Title level={4}>Early Detection</Title>
-                  <Paragraph>
-                    Catch health issues before they become serious problems with predictive AI.
-                  </Paragraph>
-                </div>
-              </div>
-              
-              <div className="benefit-item">
-                <div className="benefit-icon">
-                  <CheckCircleOutlined />
-                </div>
-                <div>
-                  <Title level={4}>Reduced Costs</Title>
-                  <Paragraph>
-                    Prevent expensive emergency interventions through proactive monitoring.
-                  </Paragraph>
-                </div>
-              </div>
-              
-              <div className="benefit-item">
-                <div className="benefit-icon">
-                  <CheckCircleOutlined />
-                </div>
-                <div>
-                  <Title level={4}>Better Outcomes</Title>
-                  <Paragraph>
-                    Improve patient outcomes with data-driven insights and early interventions.
-                  </Paragraph>
-                </div>
-              </div>
+                <Title level={3}>Personalized Intelligence</Title>
+                <Paragraph>
+                  Each patient gets their own AI model trained on their unique health data, providing insights no generic algorithm can match.
+                </Paragraph>
+              </Card>
             </Col>
             
-            <Col xs={24} lg={12}>
-              <div className="benefits-visual">
-                <div className="stats-grid">
-                  <div className="stat-card">
-                    <div className="stat-number">350K+</div>
-                    <div className="stat-label">Misdiagnosed Cases Prevented</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">95%</div>
-                    <div className="stat-label">Accuracy Rate</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">24/7</div>
-                    <div className="stat-label">Continuous Monitoring</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-number">10x</div>
-                    <div className="stat-label">Faster Detection</div>
-                  </div>
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
+                <div className="benefit-icon">
+                  <ClockCircleOutlined />
                 </div>
-              </div>
+                <Title level={3}>Continuous Care</Title>
+                <Paragraph>
+                  Monitor patient health 24/7 with AI that learns and adapts to each individual's patterns and risk factors.
+                </Paragraph>
+              </Card>
+            </Col>
+            
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
+                <div className="benefit-icon">
+                  <LinkOutlined />
+                </div>
+                <Title level={3}>Zero Disruption</Title>
+                <Paragraph>
+                  Integrates seamlessly with existing EHR systems, requiring no workflow changes while providing powerful AI insights.
+                </Paragraph>
+              </Card>
+            </Col>
+            
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
+                <div className="benefit-icon">
+                  <LockOutlined />
+                </div>
+                <Title level={3}>Future-Proof Care</Title>
+                <Paragraph>
+                  Predict health complications weeks before traditional methods, enabling proactive intervention and prevention.
+                </Paragraph>
+              </Card>
+            </Col>
+            
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
+                <div className="benefit-icon">
+                  <MonitorOutlined />
+                </div>
+                <Title level={3}>Evidence-Based AI</Title>
+                <Paragraph>
+                  Clinically validated algorithms with 94% accuracy, built by healthcare professionals for healthcare professionals.
+                </Paragraph>
+              </Card>
+            </Col>
+            
+            <Col xs={24} md={8}>
+              <Card className="benefit-card card-glass">
+                <div className="benefit-icon">
+                  <TeamOutlined />
+                </div>
+                <Title level={3}>Team Intelligence</Title>
+                <Paragraph>
+                  Enable seamless collaboration between care teams with shared AI insights and coordinated care recommendations.
+                </Paragraph>
+              </Card>
             </Col>
           </Row>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="about">
+      {/* Feature Tags Section */}
+      <section className="feature-tags">
         <div className="container">
-          <div className="text-center mb-5">
+          <div className="tags-grid">
+            <div className="tag">EHR Integration</div>
+            <div className="tag">Predictive Analytics</div>
+            <div className="tag">Real-Time Monitoring</div>
+            <div className="tag">Clinical Validation</div>
+            <div className="tag">Patient-Specific Models</div>
+            <div className="tag">HIPAA Compliant</div>
+            <div className="tag">Proactive Care</div>
+            <div className="tag">Continuous Learning</div>
+            <div className="tag">Explainable AI</div>
+            <div className="tag">AI Image Analysis</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Story Behind Kuduu Section */}
+      <section className="story-behind">
+        <div className="container">
+          <div className="story-header">
+            <div className="story-badge">AI-DRIVEN PREVENTION</div>
             <Title level={2}>The Story Behind Kuduu</Title>
-            <p className="section-subtitle">
+            <Paragraph className="story-subtitle">
               From personal experience to AI innovation in healthcare
-            </p>
+            </Paragraph>
           </div>
           
           <Row gutter={[32, 32]}>
             <Col xs={24} md={8}>
               <Card className="story-card card-glass">
+                <div className="story-icon">
+                  <BulbOutlined />
+                </div>
                 <Title level={3}>The Problem</Title>
                 <Paragraph>
                   In 2024, the American Medical Association reported over 350,000 misdiagnosed cases in the US, leading to death or serious injury. These aren't just statistics - they're real people, real families, real tragedies.
@@ -302,6 +320,9 @@ function App() {
             
             <Col xs={24} md={8}>
               <Card className="story-card card-glass">
+                <div className="story-icon">
+                  <UserOutlined />
+                </div>
                 <Title level={3}>The Personal Story</Title>
                 <Paragraph>
                   As the founder of Kuduu, I experienced firsthand how subtle health changes can go unnoticed until it's too late. That's when I realized healthcare needed AI that could catch what human eyes might miss.
@@ -311,6 +332,9 @@ function App() {
             
             <Col xs={24} md={8}>
               <Card className="story-card card-glass">
+                <div className="story-icon">
+                  <CheckCircleOutlined />
+                </div>
                 <Title level={3}>The Solution</Title>
                 <Paragraph>
                   That's why we built Kuduu - AI that doesn't just analyze data, but learns each patient's unique patterns. AI that monitors health continuously and alerts providers to potential issues before they become emergencies.
@@ -321,20 +345,36 @@ function App() {
         </div>
       </section>
 
-      {/* Why Kuduu Stands Out Section */}
-      <section id="why-kuduu" className="why-kuduu">
+      {/* Founder's Note Section */}
+      <section className="founders-note">
         <div className="container">
-          <div className="text-center mb-5">
+          <div className="founders-content">
+            <div className="founders-badge">FOUNDERS NOTE</div>
+            <div className="founders-quote">
+              As the Founder of Kuduu, my vision extends beyond building a <span className="highlight">product</span> — it's about driving a <span className="highlight">mission</span> that reimagines the future of <span className="highlight">healthcare</span> through the power of <span className="highlight">AI</span>. It's about fostering a culture of <span className="highlight">relentless curiosity, shared purpose, and meaningful innovation</span>.
+            </div>
+            <div className="founders-profile">
+              <div className="founders-avatar">DC</div>
+              <div className="founders-info">
+                <div className="founders-name">Founder - Dante Cady</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="comparison">
+        <div className="container">
+          <div className="comparison-header">
+            <div className="comparison-badge">COMPARISON</div>
             <Title level={2}>Why Kuduu Stands Out</Title>
-            <p className="section-subtitle">
-              See how we compare against other healthcare AI solutions
-            </p>
           </div>
           
           <Row gutter={[32, 32]}>
             <Col xs={24} md={12}>
               <Card className="comparison-card card-glass kuduu-highlight">
-                <div className="text-center mb-4">
+                <div className="comparison-title">
                   <Title level={3}>Kuduu</Title>
                 </div>
                 <ul className="comparison-list">
@@ -349,7 +389,7 @@ function App() {
             
             <Col xs={24} md={12}>
               <Card className="comparison-card card-glass">
-                <div className="text-center mb-4">
+                <div className="comparison-title">
                   <Title level={3}>Others</Title>
                 </div>
                 <ul className="comparison-list">
@@ -366,15 +406,10 @@ function App() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="cta-section">
+      <section className="cta">
         <div className="container">
-          <div className="text-center">
-            <Title level={2} style={{ color: 'white' }}>
-              JOIN OUR PILOT WAITLIST
-            </Title>
-            <Title level={2} style={{ color: 'white' }}>
-              Catch What Others Miss
-            </Title>
+          <div className="cta-content">
+            <Title level={2}>Ready to Transform Healthcare?</Title>
             <p className="cta-subtitle">
               AI that learns each patient's unique patterns to detect early warning signs before they become problems.
             </p>
@@ -386,37 +421,22 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <Row gutter={[32, 32]} align="middle">
-            <Col xs={24} md={8}>
-              <div className="footer-brand">
-                <div className="logo-heart">
-                  <div className="logo-deer"></div>
-                </div>
-                <div className="footer-logo-text">Kuduu</div>
+          <div className="footer-content">
+            <div className="footer-logo">
+              <div className="logo-heart">
+                <div className="logo-deer"></div>
               </div>
-            </Col>
-            
-            <Col xs={24} md={8}>
-              <div className="footer-links">
-                <a href="#benefits">Benefits</a>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-              </div>
-            </Col>
-            
-            <Col xs={24} md={8}>
-              <div className="footer-social">
-                <a href="mailto:support@kuduu.io">support@kuduu.io</a>
-              </div>
-            </Col>
-          </Row>
-          
-          <Divider style={{ borderColor: 'var(--kuduu-border)' }} />
-          
-          <div className="text-center">
-            <p className="footer-copyright">
-              © 2025 — Kuduu Platforms LLC
-            </p>
+              <span>Kuduu</span>
+            </div>
+            <div className="footer-links">
+              <a href="#hero">Home</a>
+              <a href="#features">Features</a>
+              <a href="#benefits">Benefits</a>
+              <a href="#about">About</a>
+            </div>
+            <div className="footer-copyright">
+              © 2024 Kuduu. All rights reserved.
+            </div>
           </div>
         </div>
       </footer>
