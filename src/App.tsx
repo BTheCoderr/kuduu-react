@@ -405,6 +405,20 @@ function App() {
         </div>
       </section>
 
+      {/* Catch What Others Miss Section */}
+      <section className="catch-what-others-miss">
+        <div className="container">
+          <div className="catch-content">
+            <div className="catch-badge">JOIN OUR PILOT WAITLIST</div>
+            <Title level={2}>Catch What Others Miss</Title>
+            <p className="catch-subtitle">
+              AI that learns each patient's unique patterns to detect early warning signs before they become problems.
+            </p>
+            <EmailForm {...emailFormProps} />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="cta">
         <div className="container">

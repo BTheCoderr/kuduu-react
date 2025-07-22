@@ -1321,6 +1321,53 @@ body {
   font-size: 0.75rem;
 }
 
+/* Catch What Others Miss Section */
+.catch-what-others-miss {
+  padding: 5rem 0;
+  background: var(--kuduu-dark);
+  position: relative;
+}
+
+.catch-what-others-miss::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(41, 52, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.catch-content {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.catch-badge {
+  display: inline-block;
+  background: transparent;
+  color: var(--kuduu-white);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--kuduu-border);
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.catch-subtitle {
+  color: var(--kuduu-gray);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
 
 
 /* Footer */
